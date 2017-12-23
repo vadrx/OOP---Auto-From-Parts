@@ -22,28 +22,27 @@ class Wheels;
 
 class Driver {
 public:
-    Driver(string name, Car& au80);
+    Driver(string name, Car& car1);
     string name;
-    Car* au80;
+    Car* car1;
     void speedUpCar(ofstream &fout);
     void pressPedal(ofstream &fout);
     void unPressPedal(ofstream &fout);
 };
 class Car {
 public:
-    Car(string name, int maxSpeedCar, Transmission& akpp4, Wheels& r15, Accelerator& pedal, Engine& valve8);
+    Car(string name, int maxSpeedCar, Transmission& transm, Wheels& wh, Accelerator& pedal, Engine& en);
     string name;
-    Transmission* akpp4;
-    Wheels* r15;
+    Transmission* transm;
+    Wheels* wh;
     Accelerator* pedal;
-    Engine* valve8;
+    Engine* en;
     int maxSpeedCar;
 };
 class Engine {
 public:
     Engine(double maxSpeeds);
     double maxSpeeds;
-    
     double getCurrSpeeds();
     double upSpeeds();
     double downSpeeds();
@@ -52,8 +51,8 @@ private:
 };
 class Accelerator {
 public:
-    Accelerator(Engine &valve8);
-    Engine* valve8;
+    Accelerator(Engine &en);
+    Engine* en;
     double changeSpeedsEngine(ofstream &fout);
     void setPedalForce(int pressForce);
     void setPedalPress();
@@ -64,13 +63,13 @@ protected:
 };
 class Transmission {
 public:
-    Transmission(int countNum, const vector<double> &gears, Engine &valve8);
+    Transmission(int countNum, const vector<double> &gears, Engine &en);
     int countNum;
     vector<double>* gears; //передачи
     double mainGear;
     vector<double> akppGears;
-    Wheels* r15;
-    Engine* valve8;
+    Wheels* wh;
+    Engine* en;
     int getCurrGear();
     double getGearRatio();
     double setUnionGearRatio();
@@ -87,8 +86,8 @@ private:
 };
 class Wheels {
 public:
-    Wheels(int diameter, Transmission& akpp4);
-    Transmission* akpp4;
+    Wheels(int diameter, Transmission& transm);
+    Transmission* transm;
     int diameter;
     
     void getCurrSpeedWh(ofstream &fout);

@@ -9,14 +9,14 @@
 
 int main() {
     ofstream fout("out.log");
-    Engine valve8(4500);
+    Engine en(4500);
     double gears[] = {2.7, 1.5, 1.0, 0.67};
-    Transmission transm(4, vector<double>(gears, gears + 4), valve8);
+    Transmission transm(4, vector<double>(gears, gears + 4), en);
     transm.mainGear = 4.2;
-    Accelerator pedal(valve8);
-    Wheels r15(15, transm);
-    Car au80("Audi 80", 150, transm, r15, pedal, valve8);
-    Driver dr1("Andrey", au80);
+    Accelerator pedal(en);
+    Wheels wh(15, transm);
+    Car car1("Audi 80", 150, transm, wh, pedal, en);
+    Driver dr1("Andrey", car1);
     dr1.speedUpCar(fout);
     return 0;
 }
